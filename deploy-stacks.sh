@@ -1,4 +1,5 @@
 #!/bin/bash
+# deploy-stacks.sh
 
 # Define the directories for the stacks
 PORTAINER_DIR="portainer/docker-compose.yml"

@@ -1,4 +1,5 @@
 #!/bin/bash
+# Docker-install.sh
 
 # Uninstall all conflicting packages
 echo "Uninstalling conflicting packages"
