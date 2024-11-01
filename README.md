@@ -90,8 +90,6 @@ Once Portainer is running, you can access its web UI by visiting [http://host_ip
 
 ---
 
-Let me know if there's anything else you need!
-
 ### Pi-hole Configuration (`pi-hole/docker-compose.yml`)
 
 - **Container Name**: `pi-hole`
