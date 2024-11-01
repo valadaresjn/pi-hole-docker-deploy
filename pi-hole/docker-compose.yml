@@ -1,0 +1,19 @@
+services:
+  pihole:
+    image: pihole/pihole:latest
+    container_name: pi-hole
+    environment:
+      TZ: 'America/Araguaina'  # Set your timezone
+      WEBPASSWORD: 'password'  # Admin interface password
+      DNS1: 1.1.1.1
+      DNS2: 1.0.0.1
+      IPv6: false
+      DNSMASQ_LISTENING: all
+      DNSMASQ_USER: root
+    volumes:
+      - '/opt/config/pihole:/etc/pihole'
+      - '/opt/config/dnsmasq.d:/etc/dnsmasq.d' 
+    restart: unless-stopped
+    network_mode: 'host' #Using host network mode isn't necessary to set ports on the composer the container will start with default port of the application (port 80)
+    cap_add:
+      - NET_ADMIN

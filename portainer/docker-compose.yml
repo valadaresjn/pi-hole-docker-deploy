@@ -1,0 +1,38 @@
+services:
+  portainer:
+    image: portainer/portainer-ce:2.21.1
+    container_name: portainer
+    restart: always
+    ports:
+      - "9000:9000"      # Portainer Web UI
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /opt/portainer_data:/data
+    environment:
+      AGENT_SECRET: "r1iCJ2qgDx36Kr3KxadTpvBkc9WZCB"   # Secure communication with agent
+    networks:
+      - agent_network      
+
+  agent:
+    image: portainer/agent:2.21.1
+    container_name: portainer_agent
+    restart: always
+    environment:
+      AGENT_CLUSTER_ADDR: tasks.agent
+      AGENT_PORT: 9001
+      CAP_HOST_MANAGEMENT: 1
+      AGENT_SECRET: "r1iCJ2qgDx36Kr3KxadTpvBkc9WZCB"   # This must match the Portainer server's AGENT_SECRET
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /var/lib/docker/volumes:/var/lib/docker/volumes
+    networks:
+      - agent_network
+    ports:
+      - "9001:9001"  # Portainer agent communication port
+
+networks:
+  agent_network:
+    driver: bridge   # For swarm environments, otherwise use 'bridge'
+
+volumes:
+  portainer_data:
