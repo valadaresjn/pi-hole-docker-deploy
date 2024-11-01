@@ -136,4 +136,4 @@ This project is licensed under the GPL-3.0 license.
 
 --- 
 
-Feel free to modify paths and configurations based on your environment and project needs..
+Feel free to modify paths and configurations based on your environment and project needs.
