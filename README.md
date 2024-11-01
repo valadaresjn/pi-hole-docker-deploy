@@ -1,2 +1,2 @@
 # pi-hole-docker-deploy
-Deploy of pi-hole on docker
+Deploy of pi-hole and Portainer on Docker
